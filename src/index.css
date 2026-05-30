@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-50: #f4f7fb;
+  --color-navy-100: #e8eef5;
+  --color-navy-200: #c5d4e8;
+  --color-navy-300: #9bb3d4;
+  --color-navy-400: #6b8cb8;
+  --color-navy-500: #4a6d9a;
+  --color-navy-600: #2d5080;
+  --color-navy-700: #1a3d6b;
+  --color-navy-800: #0f2f57;
+  --color-navy-900: #002d62;
+  --color-navy-950: #001a3d;
+  --color-royal-50: #eef4fc;
+  --color-royal-100: #d6e6f8;
+  --color-royal-200: #a8c9f0;
+  --color-royal-300: #6ba3e8;
+  --color-royal-400: #3385d6;
+  --color-royal-500: #0056b3;
+  --color-royal-600: #004494;
+  --color-royal-700: #003578;
+  --color-brand-black: #1a1a1a;
+  --color-surface: #f8f9fa;
+  --font-sans: "Inter", Georgia, "Times New Roman", serif;
+  --font-serif: Georgia, "Times New Roman", Times, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-size: 15px;
+  }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    html {
+      font-size: 13px;
+    }
+  }
+
+  body {
+    @apply font-sans antialiased bg-surface text-brand-black;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/80 backdrop-blur-xl border border-white/50;
+  }
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-xl border border-white/50 rounded-2xl shadow-lg shadow-navy-900/8;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-navy-900 to-royal-500 bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold
+      bg-navy-900 text-white hover:bg-royal-600 transition-all duration-300
+      shadow-lg shadow-navy-900/25 hover:shadow-xl hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold
+      border-2 border-navy-900 text-navy-900
+      hover:bg-navy-900 hover:text-white
+      transition-all duration-300;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-12 md:py-20;
+  }
+
+  .brand-curve-tr {
+    background: radial-gradient(ellipse 80% 60% at 100% 0%, rgba(0, 45, 98, 0.12) 0%, transparent 70%);
+  }
+
+  .brand-curve-bl {
+    background: radial-gradient(ellipse 70% 50% at 0% 100%, rgba(26, 26, 26, 0.08) 0%, transparent 70%);
+  }
+
+  .world-map-bg {
+    background-image: radial-gradient(circle, #c5d4e8 1px, transparent 1px);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(ellipse 80% 70% at 30% 20%, black 20%, transparent 70%);
+  }
+}
+
+@media print {
+  @page {
+    margin: 0.35in 0.45in;
+    size: letter;
+  }
+
+  html,
+  body,
+  #root,
+  #root > div,
+  main {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    color: #002d62 !important;
+  }
+
+  .site-header,
+  .site-footer,
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  main > div {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .receipt-page,
+  .receipt-page .max-w-4xl {
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: white !important;
+  }
+
+  .receipt-document {
+    position: static !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .receipt-document .receipt-watermark span {
+    font-size: 4.5rem !important;
+  }
+
+  .receipt-document .receipt-inner {
+    padding: 0.2in 0.35in !important;
+    border: 1px solid #c5d4e8 !important;
+  }
+
+  .receipt-document .receipt-header {
+    padding-bottom: 0.15in !important;
+    margin-bottom: 0.15in !important;
+  }
+
+  .receipt-document .receipt-header h1 {
+    font-size: 1.15rem !important;
+    margin-top: 0.08in !important;
+  }
+
+  .receipt-document .receipt-logo {
+    height: 0.55in !important;
+    width: auto !important;
+  }
+
+  .receipt-document .print-only {
+    margin-bottom: 0.12in !important;
+  }
+
+  .receipt-document .receipt-table-block {
+    margin-bottom: 0.12in !important;
+    page-break-inside: avoid !important;
+  }
+
+  .receipt-document .receipt-table-block h3 {
+    margin-bottom: 0.08in !important;
+    padding-bottom: 0.06in !important;
+    font-size: 0.62rem !important;
+  }
+
+  .receipt-document table {
+    font-size: 0.68rem !important;
+  }
+
+  .receipt-document table td {
+    padding-top: 0.06in !important;
+    padding-bottom: 0.06in !important;
+  }
+
+  .receipt-document .receipt-footer-row {
+    margin-top: 0.15in !important;
+    padding-top: 0.12in !important;
+    gap: 0.15in !important;
+  }
+
+  .receipt-document .receipt-stamp {
+    width: 0.85in !important;
+    height: 0.85in !important;
+    border-width: 2px !important;
+  }
+
+  .receipt-document .receipt-stamp p {
+    font-size: 0.55rem !important;
+  }
+
+  .receipt-document .receipt-stamp .stamp-approved {
+    font-size: 0.62rem !important;
+  }
+
+  .receipt-document .receipt-disclaimer {
+    margin-top: 0.12in !important;
+    padding-top: 0.1in !important;
+    font-size: 0.55rem !important;
+    line-height: 1.35 !important;
+  }
+}

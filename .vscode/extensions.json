@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "anthropic.claude-code",
+        "zoocodeorganization.zoo-code",
+        "matterai.axon-code",
+        "kilocode.kilo-code"
+    ]
+}
